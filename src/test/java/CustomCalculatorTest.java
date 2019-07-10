@@ -11,37 +11,41 @@ public class CustomCalculatorTest {
 
     //더하기 테스트 작성
     @Test
-    public void add() {
+    public void add3and2Test() {
+        //김민석MTG
         customCalculator = new CustomCalculator();
-        int result = customCalculator.add(10,15);
-        /* 이곳에 테스트 코드를 작성하세요. */
-        System.out.println("result :: " + result);
+        int result = customCalculator.add(3,2);
+        assertThat(result, is(5));
+        System.out.println("result = "+result);
     }
 
     //빼기 테스트 작성
     @Test
-    public void subtract() {
+    public void subtract7by2Test() {
+        //김민석MTG
         customCalculator = new CustomCalculator();
-        int result = customCalculator.subtract(23,10);
-        /* 이곳에 테스트 코드를 작성하세요. */
-        System.out.println("result :: " + result);
+        int result = customCalculator.subtract(7,2);
+        assertThat(result, is(5));
+        System.out.println("result = "+result);
     }
 
     //곱하기 테스트 작성
     @Test
-    public void multiply() {
+    public void multiply1with5Test() {
+        //김민석MTG
         customCalculator = new CustomCalculator();
-        int result = customCalculator.multiply(5,9);
-        /* 이곳에 테스트 코드를 작성하세요. */
-        System.out.println("result :: " + result);
+        int result = customCalculator.multiply(1,5);
+        assertThat(result, is(5));
+        System.out.println("result = "+result);
     }
 
     //나누기 테스트 작성
     @Test
-    public void divide() {
+    public void divide10by2Test() {
+        //김민석MTG
         customCalculator = new CustomCalculator();
-        int result = customCalculator.divide(25,5);
-        /* 이곳에 테스트 코드를 작성하세요. */
-        System.out.println("result :: " + result);
+        int result = customCalculator.divide(10,2);
+        assertThat(result, is(5));
+        System.out.println("result = "+result);
     }
 }
