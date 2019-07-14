@@ -44,6 +44,10 @@ public class ChampionTest {
         //김민석MTG
         List<String> emptyList = new ArrayList<>();
         assertThat(emptyList, empty());
+        // 황진우
+        List<String> emptyListTwo = null;
+        assertThat(emptyList, empty());
+
     }
 
     //notNullValue 활용한 테스트
@@ -52,6 +56,9 @@ public class ChampionTest {
         //김민석MTG
         String lck = "LCK";
         assertThat(lck, notNullValue());
+        // 황진우
+        String emptyStr = "";
+        assertThat(emptyStr, notNullValue());
     }
 
     //nullValue 활용한 테스트
@@ -60,6 +67,9 @@ public class ChampionTest {
         //김민석MTG
         String lck = null;
         assertThat(lck, nullValue());
+        // 황진우
+        String emptyStr = "";
+        assertThat(emptyStr, not(nullValue()));
     }
 
 
@@ -77,8 +87,9 @@ public class ChampionTest {
         assertThat(sampleString2, is(endsWith("point")));
         assertThat(endString, anyOf(startsWith(endString), containsString(endString)));//둘 중 하나만 맞아도 넘어감 anyof
         assertThat(startString, allOf(startsWith(startString), endsWith(startString)));
-        //all of는 둘다 맞아야됌
-        //containsString은 string안에 해당 string이 포함되어있나
+        // 황진우
+        assertThat(sampleString1, startsWith(startString));
+        assertThat(sampleString2, endsWith(endString));
     }
 
     //부동소수점 범위 closeTo 테스트
@@ -86,7 +97,8 @@ public class ChampionTest {
     public void floatingPointTest_WhenDivide10by3() {
         //김민석MTG
         assertThat((double)10/3, closeTo(3, 0.5));
-        //실제값, 3, 오차범위0.2
+        // 황진우
+        assertThat(Math.PI, closeTo(3.14, 0.01));
     }
 
     //anything 테스트
@@ -94,6 +106,8 @@ public class ChampionTest {
     public void shouldNotErrorGetReferenceWhenGet4thChampion() {
         //김민석MTG
         assertThat(championList.get(4), anything());    //anything(아무거나), 값만 가져 올 수 있으면 어떤값이던 괜찮
+        // 황진우
+        assertThat(null, anything());
     }
 
     //객체 크기 검증 테스트 hasSize
@@ -103,6 +117,10 @@ public class ChampionTest {
         assertTrue(championList.size() == 5);
         assertThat(championList.size(), is(5));
         assertThat(championList, hasSize(5));   //hasSize : 배열자체를 넘겨 주면 사이즈를 알아서 계산(굳이 사이즈 계산을 할 필요 없음)
+        // 황진우
+        championList.add(new Champion("Test", "Test"));
+        assertThat(championList, hasSize(6));
+        championList.remove(5);
     }
 
     //서폿 챔피언은 타릭이어야 한다라는 조건으로 테스트 코드 작성
@@ -113,6 +131,8 @@ public class ChampionTest {
         assertThat("타릭", is(supportChamp.getName()));
         assertThat("타릭", is(equalTo(supportChamp.getName())));//equalTo는 이런게 있다 정도만..? is랑 거이 같음
         assertThat("타릭", equalTo(supportChamp.getName()));
+        // 황진우
+        assertThat("바텀", is(supportChamp.getPosition()));
     }
 
     //hasProperty 활용하여 속성이 포함되어 있는지 테스트
@@ -122,7 +142,8 @@ public class ChampionTest {
         assertThat(championList.get(0), hasProperty("position"));
         assertThat(championList.get(0), hasProperty("name"));
         assertThat(championList.get(0), hasProperty("position", equalTo("탑")));
-        //속성이 있는지 확인(private 필드 변수)
+        // 황진우
+        assertThat(championList.get(0), not(hasProperty("rank")));
     }
 
     //hasToString 활용 테스트
@@ -132,7 +153,8 @@ public class ChampionTest {
         List<String> iLikeChampNames = Arrays.asList("조이", "티모", "아이번", "징크스", "카밀");
         assertThat(iLikeChampNames.get(0), hasToString("조이"));
         assertThat(iLikeChampNames.get(0), containsString("조"));
-        //해당 문자열 가졌는지 검증
+        // 황진우
+        assertThat(iLikeChampNames.get(1), containsString("티"));
     }
 
     //property와 value가 같은지 테스트
@@ -143,6 +165,8 @@ public class ChampionTest {
         List<String> championNames2 = Arrays.asList("루시안", "애쉬", "렉사이");
         assertThat(championNames1, samePropertyValuesAs(championNames2));
         //samePropertyValuesAs : property의 요소가 같느냐?(객체(class)의 구성 요소가 같느냐?)
+        // 황진우
+        assertThat(championNames1.get(0), not(samePropertyValuesAs("Test")));
     }
 
     //탑 챔피언은 다리우스여야 한다라는 조건으로 테스트 코드 작성, stream 활용예
@@ -152,9 +176,11 @@ public class ChampionTest {
         Optional<Champion> filterdChampion = championList.stream()//Optional은 null을 방지하기 위함
                 .filter(c -> c.getPosition().equals("정글"))
                 .findAny();
-        System.out.println("result :: "+filterdChampion);
+        // System.out.println("result :: "+filterdChampion);
         String champName = filterdChampion.get().getName();
         assertTrue(champName.equals("리신"));
         assertThat("리신", is(champName));
+        // 황진우
+        assertThat(filterdChampion.get(), is(new Champion("리신", "정글")));
     }
 }

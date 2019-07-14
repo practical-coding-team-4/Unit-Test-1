@@ -3,6 +3,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.*;
 
 public class CustomCalculatorTest {
@@ -17,6 +19,8 @@ public class CustomCalculatorTest {
         int result = customCalculator.add(3,2);
         assertThat(result, is(5));
         System.out.println("result = "+result);
+        // 황진우
+        assertThat(customCalculator.add(3, 2), not(6));
     }
 
     //빼기 테스트 작성
@@ -27,6 +31,8 @@ public class CustomCalculatorTest {
         int result = customCalculator.subtract(7,2);
         assertThat(result, is(5));
         System.out.println("result = "+result);
+        // 황진우
+        assertThat(customCalculator.subtract(7, 2), not(6));
     }
 
     //곱하기 테스트 작성
@@ -37,6 +43,8 @@ public class CustomCalculatorTest {
         int result = customCalculator.multiply(1,5);
         assertThat(result, is(5));
         System.out.println("result = "+result);
+        // 황진우
+        assertThat(customCalculator.multiply(1, 5), notNullValue());
     }
 
     //나누기 테스트 작성
@@ -47,5 +55,7 @@ public class CustomCalculatorTest {
         int result = customCalculator.divide(10,2);
         assertThat(result, is(5));
         System.out.println("result = "+result);
+        // 황진우
+        assertThat(customCalculator.divide(10, 2), not(6));
     }
 }

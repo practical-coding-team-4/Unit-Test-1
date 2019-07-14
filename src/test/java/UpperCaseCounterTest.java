@@ -2,8 +2,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.*;
 
 public class UpperCaseCounterTest {
@@ -18,6 +20,8 @@ public class UpperCaseCounterTest {
         int numberOfUpperCaseCharinString = upperCaseCounter.getNumberOfUpperCaseCharactersInString(str);
         System.out.println("result :: " + numberOfUpperCaseCharinString);
         assertTrue(numberOfUpperCaseCharinString == 0);
+        // 황진우
+        assertThat(numberOfUpperCaseCharinString, is(0));
     }
 
     //빈값을 전달했을 때 0을 리턴하는지에 대한 테스트 작성
@@ -28,6 +32,8 @@ public class UpperCaseCounterTest {
         int numberOfUpperCaseCharinString = upperCaseCounter.getNumberOfUpperCaseCharactersInString(str);
         System.out.println("result :: " + numberOfUpperCaseCharinString);
         assertTrue(numberOfUpperCaseCharinString == 0);
+        // 황진우
+        assertThat(numberOfUpperCaseCharinString, is(0));
     }
 
     //대문자들이 포함된 문자열을 전달했을 때 카운팅된 숫자와 맞는지 검증하는 테스트 작성
@@ -44,6 +50,8 @@ public class UpperCaseCounterTest {
         org.junit.Assert.assertFalse(numberOfUpperCaseCharactersInString == 9);
         //assertThat 단정문을 사용해서 True인 테스트 코드 작성
         org.junit.Assert.assertThat(numberOfUpperCaseCharactersInString, is(10));
+        // 황진우
+        assertThat(numberOfUpperCaseCharactersInString, not(9));
     }
 
     //대소문자가 섞여 있을 때 정확히 카운팅 되는 지에 대한 테스트 코드 작성
@@ -59,6 +67,8 @@ public class UpperCaseCounterTest {
         //assertThat 단정문을 사용해서 True인 테스트 코드 작성
         assertThat(result, is(6));
         System.out.println("result :: " + result);
+        // 황진우
+        assertThat(result, not(7));
     }
 
     //잘못된 값을 참조했을 때 IndexOutOfBoundsException Exception이 발생하는지 테스트 코드 작성
@@ -66,7 +76,9 @@ public class UpperCaseCounterTest {
     public void expectedExceptionSegmentFault()
     {
         //김민석MTG
-        new ArrayList<String>().get(3);
+        // new ArrayList<String>().get(3);
+        // 황진우
+        new ArrayList<String>().remove(3);
     }
 
 
@@ -77,5 +89,9 @@ public class UpperCaseCounterTest {
         //김민석MTG
         Thread.sleep(4000);
         System.out.println("테스트 Passed!");
+        // 황진우
+        Thread.sleep(500);
+        System.out.println("테스트 Passed Again!");
+
     }
 }
