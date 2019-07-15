@@ -21,6 +21,8 @@ public class CustomCalculatorTest {
         System.out.println("result = "+result);
         // 황진우
         assertThat(customCalculator.add(3, 2), not(6));
+        // 이준하
+        assertEquals(customCalculator.add(10,5), 15);
     }
 
     //빼기 테스트 작성
@@ -33,6 +35,8 @@ public class CustomCalculatorTest {
         System.out.println("result = "+result);
         // 황진우
         assertThat(customCalculator.subtract(7, 2), not(6));
+        // 이준하
+        assertEquals(customCalculator.subtract(10,5), 5);
     }
 
     //곱하기 테스트 작성
@@ -45,6 +49,8 @@ public class CustomCalculatorTest {
         System.out.println("result = "+result);
         // 황진우
         assertThat(customCalculator.multiply(1, 5), notNullValue());
+        // 이준하
+        assertEquals(customCalculator.multiply(10,5), 50);
     }
 
     //나누기 테스트 작성
@@ -57,5 +63,7 @@ public class CustomCalculatorTest {
         System.out.println("result = "+result);
         // 황진우
         assertThat(customCalculator.divide(10, 2), not(6));
+        // 이준하
+        assertEquals(customCalculator.divide(10,5), 2);
     }
 }

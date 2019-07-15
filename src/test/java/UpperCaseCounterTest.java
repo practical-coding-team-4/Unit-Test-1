@@ -22,6 +22,8 @@ public class UpperCaseCounterTest {
         assertTrue(numberOfUpperCaseCharinString == 0);
         // 황진우
         assertThat(numberOfUpperCaseCharinString, is(0));
+        // 이준하
+        assertEquals(numberOfUpperCaseCharinString, 0);
     }
 
     //빈값을 전달했을 때 0을 리턴하는지에 대한 테스트 작성
@@ -34,6 +36,8 @@ public class UpperCaseCounterTest {
         assertTrue(numberOfUpperCaseCharinString == 0);
         // 황진우
         assertThat(numberOfUpperCaseCharinString, is(0));
+        // 이준하
+        assertEquals(numberOfUpperCaseCharinString, 0);
     }
 
     //대문자들이 포함된 문자열을 전달했을 때 카운팅된 숫자와 맞는지 검증하는 테스트 작성
@@ -52,6 +56,8 @@ public class UpperCaseCounterTest {
         org.junit.Assert.assertThat(numberOfUpperCaseCharactersInString, is(10));
         // 황진우
         assertThat(numberOfUpperCaseCharactersInString, not(9));
+        // 이준하
+        assertEquals(numberOfUpperCaseCharactersInString, 10);
     }
 
     //대소문자가 섞여 있을 때 정확히 카운팅 되는 지에 대한 테스트 코드 작성
@@ -69,6 +75,8 @@ public class UpperCaseCounterTest {
         System.out.println("result :: " + result);
         // 황진우
         assertThat(result, not(7));
+        // 이준하
+        assertEquals(result, 6);
     }
 
     //잘못된 값을 참조했을 때 IndexOutOfBoundsException Exception이 발생하는지 테스트 코드 작성
@@ -79,6 +87,8 @@ public class UpperCaseCounterTest {
         // new ArrayList<String>().get(3);
         // 황진우
         new ArrayList<String>().remove(3);
+        // 이준하
+        new ArrayList<String>().indexOf(3);
     }
 
 
@@ -92,6 +102,9 @@ public class UpperCaseCounterTest {
         // 황진우
         Thread.sleep(500);
         System.out.println("테스트 Passed Again!");
+        // 이준하
+        Thread.sleep(1);
+        System.out.println("Test pass.");
 
     }
 }

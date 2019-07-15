@@ -16,6 +16,8 @@ import static org.hamcrest.beans.SamePropertyValuesAs.samePropertyValuesAs;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.hamcrest.collection.IsEmptyCollection.empty;
 import static org.hamcrest.object.HasToString.hasToString;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class ChampionTest {
     private List<Champion> championList = new ArrayList<Champion>();
@@ -47,6 +49,9 @@ public class ChampionTest {
         // 황진우
         List<String> emptyListTwo = null;
         assertThat(emptyList, empty());
+        // 이준하
+        List<String> emptyListThree = new ArrayList<>();
+        assertThat(emptyListThree, empty());
 
     }
 
@@ -59,6 +64,9 @@ public class ChampionTest {
         // 황진우
         String emptyStr = "";
         assertThat(emptyStr, notNullValue());
+        // 이준하
+        String lcs ="LCS";
+        assertThat(lcs, notNullValue());
     }
 
     //nullValue 활용한 테스트
@@ -70,6 +78,9 @@ public class ChampionTest {
         // 황진우
         String emptyStr = "";
         assertThat(emptyStr, not(nullValue()));
+        // 이준하
+        String NullString = null;
+        assertThat(NullString, nullValue());
     }
 
 
@@ -90,6 +101,9 @@ public class ChampionTest {
         // 황진우
         assertThat(sampleString1, startsWith(startString));
         assertThat(sampleString2, endsWith(endString));
+        // 이준하
+        assertThat(sampleString1, hasToString("Player Focus"));
+        assertThat(sampleString2, hasToString("Player point"));
     }
 
     //부동소수점 범위 closeTo 테스트
@@ -99,6 +113,8 @@ public class ChampionTest {
         assertThat((double)10/3, closeTo(3, 0.5));
         // 황진우
         assertThat(Math.PI, closeTo(3.14, 0.01));
+        // 이준하
+        assertThat(5.5, closeTo(5,0.6));
     }
 
     //anything 테스트
@@ -108,6 +124,8 @@ public class ChampionTest {
         assertThat(championList.get(4), anything());    //anything(아무거나), 값만 가져 올 수 있으면 어떤값이던 괜찮
         // 황진우
         assertThat(null, anything());
+        // 이준하
+        assertThat(150, anything());
     }
 
     //객체 크기 검증 테스트 hasSize
@@ -121,6 +139,10 @@ public class ChampionTest {
         championList.add(new Champion("Test", "Test"));
         assertThat(championList, hasSize(6));
         championList.remove(5);
+        // 이준하
+        assertFalse(championList.size() == 4);
+
+
     }
 
     //서폿 챔피언은 타릭이어야 한다라는 조건으로 테스트 코드 작성
@@ -133,6 +155,8 @@ public class ChampionTest {
         assertThat("타릭", equalTo(supportChamp.getName()));
         // 황진우
         assertThat("바텀", is(supportChamp.getPosition()));
+        // 이준하
+        assertFalse(supportChamp.getPosition()=="탑");
     }
 
     //hasProperty 활용하여 속성이 포함되어 있는지 테스트
@@ -144,6 +168,8 @@ public class ChampionTest {
         assertThat(championList.get(0), hasProperty("position", equalTo("탑")));
         // 황진우
         assertThat(championList.get(0), not(hasProperty("rank")));
+        // 이준하
+        assertThat(hasProperty("name"), not(equalTo("키아나")));
     }
 
     //hasToString 활용 테스트
@@ -155,6 +181,8 @@ public class ChampionTest {
         assertThat(iLikeChampNames.get(0), containsString("조"));
         // 황진우
         assertThat(iLikeChampNames.get(1), containsString("티"));
+        // 이준하
+        assertThat(iLikeChampNames.get(3), containsString(("징")));
     }
 
     //property와 value가 같은지 테스트
@@ -167,6 +195,8 @@ public class ChampionTest {
         //samePropertyValuesAs : property의 요소가 같느냐?(객체(class)의 구성 요소가 같느냐?)
         // 황진우
         assertThat(championNames1.get(0), not(samePropertyValuesAs("Test")));
+        // 이준하
+        assertThat(championNames2.get(2), samePropertyValuesAs(championNames1.get(2)));
     }
 
     //탑 챔피언은 다리우스여야 한다라는 조건으로 테스트 코드 작성, stream 활용예
@@ -182,5 +212,7 @@ public class ChampionTest {
         assertThat("리신", is(champName));
         // 황진우
         assertThat(filterdChampion.get(), is(new Champion("리신", "정글")));
+        // 이준하
+        assertFalse(filterdChampion.get().getName()=="아무무");
     }
 }
