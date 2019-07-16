@@ -4,6 +4,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.*;
@@ -24,6 +25,8 @@ public class UpperCaseCounterTest {
         assertThat(numberOfUpperCaseCharinString, is(0));
         // 이준하
         assertEquals(numberOfUpperCaseCharinString, 0);
+        // 이주형
+        assertThat(numberOfUpperCaseCharinString, equalTo(0));
     }
 
     //빈값을 전달했을 때 0을 리턴하는지에 대한 테스트 작성
@@ -38,6 +41,8 @@ public class UpperCaseCounterTest {
         assertThat(numberOfUpperCaseCharinString, is(0));
         // 이준하
         assertEquals(numberOfUpperCaseCharinString, 0);
+        // 이주형
+        assertThat(numberOfUpperCaseCharinString, equalTo(0));
     }
 
     //대문자들이 포함된 문자열을 전달했을 때 카운팅된 숫자와 맞는지 검증하는 테스트 작성
@@ -58,6 +63,8 @@ public class UpperCaseCounterTest {
         assertThat(numberOfUpperCaseCharactersInString, not(9));
         // 이준하
         assertEquals(numberOfUpperCaseCharactersInString, 10);
+        // 이주형
+        assertTrue(numberOfUpperCaseCharactersInString == 10);
     }
 
     //대소문자가 섞여 있을 때 정확히 카운팅 되는 지에 대한 테스트 코드 작성
@@ -77,6 +84,8 @@ public class UpperCaseCounterTest {
         assertThat(result, not(7));
         // 이준하
         assertEquals(result, 6);
+        // 이주형
+        assertThat(result,equalTo(6));
     }
 
     //잘못된 값을 참조했을 때 IndexOutOfBoundsException Exception이 발생하는지 테스트 코드 작성
@@ -89,6 +98,8 @@ public class UpperCaseCounterTest {
         new ArrayList<String>().remove(3);
         // 이준하
         new ArrayList<String>().indexOf(3);
+        // 이주형
+        new ArrayList<String>().get(3);
     }
 
 
@@ -105,6 +116,9 @@ public class UpperCaseCounterTest {
         // 이준하
         Thread.sleep(1);
         System.out.println("Test pass.");
+        // 이주형
+        Thread.sleep(200);
+        System.out.println("All case passed");
 
     }
 }

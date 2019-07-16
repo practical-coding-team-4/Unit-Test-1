@@ -52,6 +52,9 @@ public class ChampionTest {
         // 이준하
         List<String> emptyListThree = new ArrayList<>();
         assertThat(emptyListThree, empty());
+        // 이주형
+        List<String> list = new ArrayList<>();
+        assertThat(list,empty());
 
     }
 
@@ -67,6 +70,9 @@ public class ChampionTest {
         // 이준하
         String lcs ="LCS";
         assertThat(lcs, notNullValue());
+        // 이주형
+        String LPL = "LPL";
+        assertThat(LPL,notNullValue());
     }
 
     //nullValue 활용한 테스트
@@ -81,6 +87,9 @@ public class ChampionTest {
         // 이준하
         String NullString = null;
         assertThat(NullString, nullValue());
+        // 이주형
+        String tmp = null;
+        assertThat(tmp,nullValue());
     }
 
 
@@ -104,6 +113,9 @@ public class ChampionTest {
         // 이준하
         assertThat(sampleString1, hasToString("Player Focus"));
         assertThat(sampleString2, hasToString("Player point"));
+        // 이주형
+        assertThat(sampleString1,is("Player Focus"));
+        assertThat(sampleString2,anyOf(startsWith(startString),endsWith(endString)));
     }
 
     //부동소수점 범위 closeTo 테스트
@@ -115,6 +127,8 @@ public class ChampionTest {
         assertThat(Math.PI, closeTo(3.14, 0.01));
         // 이준하
         assertThat(5.5, closeTo(5,0.6));
+        // 이주형
+        assertThat((double)10/6, closeTo(1,0.7));
     }
 
     //anything 테스트
@@ -126,6 +140,8 @@ public class ChampionTest {
         assertThat(null, anything());
         // 이준하
         assertThat(150, anything());
+        // 이주형
+        assertThat("Anything Test",anything());
     }
 
     //객체 크기 검증 테스트 hasSize
@@ -141,8 +157,8 @@ public class ChampionTest {
         championList.remove(5);
         // 이준하
         assertFalse(championList.size() == 4);
-
-
+        // 이주형
+        assertThat(championList.size(),equalTo(5));
     }
 
     //서폿 챔피언은 타릭이어야 한다라는 조건으로 테스트 코드 작성
@@ -157,6 +173,9 @@ public class ChampionTest {
         assertThat("바텀", is(supportChamp.getPosition()));
         // 이준하
         assertFalse(supportChamp.getPosition()=="탑");
+        // 이주형
+        Champion topChamp = new Champion("카밀", "탑");
+        assertThat("탑",is(topChamp.getPosition()));
     }
 
     //hasProperty 활용하여 속성이 포함되어 있는지 테스트
@@ -170,6 +189,8 @@ public class ChampionTest {
         assertThat(championList.get(0), not(hasProperty("rank")));
         // 이준하
         assertThat(hasProperty("name"), not(equalTo("키아나")));
+        // 이주형
+        assertThat(championList.get(1),hasProperty("name",equalTo("리신")));
     }
 
     //hasToString 활용 테스트
@@ -183,6 +204,9 @@ public class ChampionTest {
         assertThat(iLikeChampNames.get(1), containsString("티"));
         // 이준하
         assertThat(iLikeChampNames.get(3), containsString(("징")));
+        // 이주형
+        assertThat(iLikeChampNames.get(2),hasToString("아이번"));
+        assertThat(iLikeChampNames.get(2), containsString("아"));
     }
 
     //property와 value가 같은지 테스트
@@ -197,6 +221,8 @@ public class ChampionTest {
         assertThat(championNames1.get(0), not(samePropertyValuesAs("Test")));
         // 이준하
         assertThat(championNames2.get(2), samePropertyValuesAs(championNames1.get(2)));
+        // 이주형
+        assertThat(championNames1.get(3), samePropertyValuesAs("갈리오"));
     }
 
     //탑 챔피언은 다리우스여야 한다라는 조건으로 테스트 코드 작성, stream 활용예
@@ -214,5 +240,7 @@ public class ChampionTest {
         assertThat(filterdChampion.get(), is(new Champion("리신", "정글")));
         // 이준하
         assertFalse(filterdChampion.get().getName()=="아무무");
+        // 이주형
+        assertThat(filterdChampion.get().getName(),equalTo("리신"));
     }
 }
